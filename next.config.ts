@@ -9,11 +9,13 @@ const nextConfig: NextConfig = {
   output: "export",
 
   /**
-   * Set base path. This is usually the slug of your repository.
+   * Set base path conditionally based on environment.
+   * In development (npm run dev), no basePath will be used.
+   * In production/deployment, use the repository name as basePath.
    *
    * @see https://nextjs.org/docs/app/api-reference/next-config-js/basePath
    */
-  basePath: "/test-next-gh-pages",
+  basePath: process.env.NODE_ENV === "development" ? "" : "/test-next-gh-pages",
 
   /**
    * Disable server-based image optimization. Next.js does not support
